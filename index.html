@@ -3,17 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
     <style>
       body {
         height: 100vh;
         width: 100%;
+        font-family: "Montserrat", sans-serif;
       }
       .container {
         display: grid;
         height: 100%;
         width: 100%;
         place-items: center;
+      }
+      h1 {
+        animation: title_show 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+      @keyframes title_show {
+        0% {
+          opacity: 0;
+          transform: translatex(-100%);
+        }
+        100% {
+          opacity: 1;
+          transform: translatex(0rem);
+        }
       }
     </style>
   </head>
