@@ -17,7 +17,7 @@
       rel="stylesheet"
     />
     <link href="./styles.css" rel="stylesheet" />
-    <title>Document</title>
+    <title>Nicola Toledo | Slides</title>
   </head>
   <body>
     <div class="container">
@@ -182,7 +182,10 @@
         progress: true,
         history: true,
         center: true,
-        transition: "default", // none/fade/slide/convex/concave/zoom
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        transitionSpeed: "default", // default/fast/slow
+        transition: "slide", // none/fade/slide/convex/concave/zoom
         dependencies: deps,
       };
 
