@@ -16,24 +16,23 @@ body {
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
 }
-section {
+section.home,
+section.slide-wrapper {
   scroll-snap-align: start;
   height: 100%;
   width: 100%;
 }
 
-section.cover {
+section.home {
   display: grid;
   place-items: center;
-}
-
-.cover h1 {
-  animation: title_show 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-section.home {
   background-color: white;
   color: rgb(19, 19, 19);
 }
+section.home h1 {
+  animation: title_show 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
 section.rxjs {
   background-color: #ba2ad2;
   color: white;
