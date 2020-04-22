@@ -30,6 +30,10 @@ section.cover {
 .cover h1 {
   animation: title_show 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+section.home {
+  background-color: white;
+  color: rgb(19, 19, 19);
+}
 section.rxjs {
   background-color: #ba2ad2;
   color: white;

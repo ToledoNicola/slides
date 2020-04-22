@@ -3,6 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reveal.css" />
+    <link rel="stylesheet" href="./css/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/github.css" />
+    <link
+      rel="stylesheet"
+      href="./css/print/paper.css"
+      type="text/css"
+      media="print"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
       rel="stylesheet"
@@ -16,11 +25,175 @@
         <h1>Le mie slides 👨🏻‍🏫</h1>
       </section>
       <section class="cover rxjs">
-        <h1>Rxjs</h1>
+        <div class="reveal">
+          <div class="slides">
+            <section data-markdown>
+              <script type="text/template">
+                **Rxjs**
+              </script>
+            </section>
+            <section data-markdown>
+              <script type="text/template">
+                # Anatomia
+
+                l' **observable o stream** è nella pratica _solo una funzione_ \( la **subscription function** \) che lega l' **observer** ad un **producer**
+
+                {% hint style="info" %}
+                **producer:** è tutto ciò che stai usando per ottenere valori e passarli a `observer.next(value)`, chiamata http, ciclo su un array etc.
+                {% endhint %}
+              </script>
+            </section>
+            <section data-markdown>
+              <script type="text/template">
+                il producer all'interno dell'observable emette dei valori che l'observer recupera
+
+                ogni volta che un observer si sottoscrive all'observable riesegue la **subscription function**  \(in pratica l'observable\)
+              </script>
+            </section>
+            <section data-markdown>
+              <script type="text/template">
+                The observable can essentially do three things in terms of notifying its observers.
+
+                1. Emit a value - \(0, 1 or many times\)
+                2. Emit an error - \(0 or 1 times\)
+                3. Complete - \(0 or 1 times\)
+              </script>
+            </section>
+            <section data-markdown>
+              <script type="text/template">
+                Once an observable either errors or completes, it will unsubscribe all of its observers and can no longer emit values, error or complete. A consequence of this is that an observable will never both error and complete.
+
+                ```typescript
+                const observer = {
+                    next: (value) => {},
+                    error: (error) => {},
+                    complete: () => {}
+                }
+                ```
+              </script>
+            </section>
+            <section data-markdown>
+              <script type="text/template">
+                ```typescript
+                import { Observable } from 'rxjs';
+
+                /*
+                 * A 'subscription' function, defining what action to take each time
+                 * an observer subscribes. The function will be passed the
+                 * subscribing observer as a parameter.
+                 *
+                 * IN PRATICA QUESTA FUNZIONE è IL NOSTRO OBSERVABLE
+                 * ED IN QUESTO CASO IL PRODUCER è LA FUNZIONE STESSA
+                 */
+                const subscriptionFn = observer => {
+                  console.log('A new subscriber');
+                  observer.next(1);
+                  observer.next(2);
+                  observer.complete();
+                }
+
+                /*
+                 * Create a new observable, giving it a subscription function to
+                 * execute whenever any Observer subscribes.
+                 */
+                const source$ = new Observable(subscriptionFn);
+
+                /*
+                 * An observer - simply an object with next, error and complete
+                 * methods.
+                 */
+                const observer = {
+                    next: value => console.log(value),
+                    error: error => console.log(`Error: ${error}`),
+                    complete: () => console.log('Complete'),
+                };
+
+                /*
+                 * We subscribe here, causing our observable to execute the
+                 * subscription function we gave it earlier, with the observer
+                 * we give it here as an argument.
+                 */
+                source$.subscribe(observer);
+                // A new subscriber
+                // 1
+                // 2
+
+                // We subscribe again, causing the subscription function to execute again.
+                source$.subscribe(observer);
+                // A new subscriber
+                // 1
+                // 2
+                ```
+              </script>
+            </section>
+          </div>
+        </div>
       </section>
       <section class="cover ngrx">
         <h1>Ngrx</h1>
       </section>
     </div>
+
+    <script src="./js/reveal.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // Optional libraries used to extend on reveal.js
+      var deps = [
+        {
+          src: "./plugin/markdown/marked.js",
+          condition: function () {
+            return !!document.querySelector("[data-markdown]");
+          },
+        },
+        {
+          src: "./plugin/markdown/markdown.js",
+          condition: function () {
+            return !!document.querySelector("[data-markdown]");
+          },
+        },
+        {
+          src: "./plugin/highlight/highlight.js",
+          async: true,
+          callback: function () {
+            hljs.initHighlightingOnLoad();
+          },
+        },
+        { src: "./plugin/zoom-js/zoom.js", async: true },
+        { src: "./plugin/notes/notes.js", async: true },
+        { src: "./plugin/math/math.js", async: true },
+      ];
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: "default", // none/fade/slide/convex/concave/zoom
+        dependencies: deps,
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal.getQueryHash() || {};
+
+      var options = extend(defaultOptions, {}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
   </body>
 </html>
