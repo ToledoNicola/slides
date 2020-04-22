@@ -7,59 +7,8 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
       rel="stylesheet"
     />
+    <link href="./styles.css" rel="stylesheet" />
     <title>Document</title>
-    <style>
-      html {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        height: 100vh;
-        width: 100%;
-        font-family: "Montserrat", sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-      .container {
-        height: 100%;
-        width: 100%;
-        overflow-y: scroll;
-        scroll-snap-type: y mandatory;
-      }
-      section {
-        scroll-snap-align: start;
-        height: 100%;
-        width: 100%;
-      }
-
-      section.cover {
-        display: grid;
-        place-items: center;
-      }
-
-      .cover h1 {
-        animation: title_show 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      }
-      section.rxjs {
-        background-color: #ba2ad2;
-        color: white;
-      }
-      section.ngrx {
-        background-color: #412945;
-        color: wheat;
-      }
-      @keyframes title_show {
-        0% {
-          opacity: 0;
-          transform: translatex(-100%);
-        }
-        100% {
-          opacity: 1;
-          transform: translatex(0rem);
-        }
-      }
-    </style>
   </head>
   <body>
     <div class="container">
