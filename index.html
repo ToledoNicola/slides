@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/reveal.css" />
-    <link rel="stylesheet" href="./css/theme/black.css" id="theme" />
-    <link rel="stylesheet" href="./css/highlight/github.css" />
+    <link rel="stylesheet" href="./css/theme/night.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/monokai.css" />
     <link
       rel="stylesheet"
       href="./css/print/paper.css"
@@ -16,20 +16,30 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="plugin/fullscreen-code/reveal.js-fullscreen-code.css"
+    />
+    <link href="./custom-theme.css" rel="stylesheet" />
     <link href="./styles.css" rel="stylesheet" />
     <title>Nicola Toledo | Slides</title>
   </head>
   <body>
     <div class="container">
       <section class="home">
-        <h1>Le mie slides 👨🏻‍🏫</h1>
+        <h1>
+          👨🏻‍🏫<br />
+          Le <br />
+          mie <br />
+          slides
+        </h1>
       </section>
       <section class="slide-wrapper rxjs">
         <div class="reveal">
           <div class="slides">
-            <section data-markdown>
+            <section data-background-color="#360058" data-markdown>
               <script type="text/template">
-                **Rxjs**
+                # Rxjs
               </script>
             </section>
             <section data-markdown>
@@ -72,9 +82,11 @@
                 ```
               </script>
             </section>
-            <section data-markdown>
-              <script type="text/template">
-                ```typescript
+            <section class="stretch">
+              <pre
+                class="stretch"
+              ><code  class="hljs"data-line-numbers="13-18,24|30-34|41|47">
+
                 import { Observable } from 'rxjs';
 
                 /*
@@ -123,14 +135,13 @@
                 // A new subscriber
                 // 1
                 // 2
-                ```
-              </script>
+              </code></pre>
             </section>
           </div>
         </div>
       </section>
       <section class="slide-wrapper ngrx">
-        <h1>Ngrx</h1>
+        <!-- <h1>Ngrx</h1> -->
       </section>
     </div>
 
@@ -174,6 +185,11 @@
         { src: "./plugin/zoom-js/zoom.js", async: true },
         { src: "./plugin/notes/notes.js", async: true },
         { src: "./plugin/math/math.js", async: true },
+        { src: "plugin/fullscreen-code/jquery-3.1.1.min.js", async: true },
+        {
+          src: "plugin/fullscreen-code/reveal.js-fullscreen-code.js",
+          async: true,
+        },
       ];
 
       // default options to init reveal.js
@@ -183,7 +199,7 @@
         history: true,
         center: true,
         // Enables touch navigation on devices with touch input
-        touch: false,
+        touch: true,
         transitionSpeed: "default", // default/fast/slow
         transition: "slide", // none/fade/slide/convex/concave/zoom
         dependencies: deps,
