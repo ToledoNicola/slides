@@ -63,7 +63,7 @@ section.ngrx {
   background-color: #412945;
   color: wheat;
 }
-section.ngrx iframe {
+section.slide-wrapper iframe {
   height: 100%;
   width: 100%;
 }
@@ -83,4 +83,9 @@ section.ngrx iframe {
   section.home h1 {
     font-size: 3rem;
   }
+}
+
+/* google presentation iframe */
+div.punch-viewer-nav-logo {
+  display: none !important;
 }
