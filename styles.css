@@ -63,6 +63,10 @@ section.ngrx {
   background-color: #412945;
   color: wheat;
 }
+section.ngrx iframe {
+  height: 100%;
+  width: 100%;
+}
 @keyframes title_show {
   0% {
     opacity: 0;
