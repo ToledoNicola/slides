@@ -33,13 +33,40 @@ body {
   width: 100%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth; /* per creare l'effetto lento sul clic dell'anchor*/
 }
+
+/* tutte le sezioni */
 section.home,
 section.slide-wrapper {
   scroll-snap-align: start;
   height: 100%;
   width: 100%;
 }
+
+section.slide-wrapper iframe {
+  height: 100%;
+  width: 100%;
+}
+
+/* BACK TO TOP BUTTON */
+
+#return-to-top {
+  position: fixed;
+  bottom: 0;
+  left: 10px;
+  padding: 2rem;
+  height: 3rem;
+  width: 3rem;
+
+  background-image: url("./assets/arrow.svg");
+  background-position: center;
+  background-size: contain;
+  filter: brightness(0.5) sepia(1) hue-rotate(140deg) saturate(6); /* QUESTO FUNZIONA SE L'SVG HA IMPOSTATO UN FILL AD ES WHITE E DOPO GLI MODIFCIO LA LUMINOSITA 0 SCURO*/
+  /* transform: rotate(178deg); */
+}
+
+/* HOME */
 
 section.home {
   display: grid;
@@ -54,6 +81,7 @@ section.home h1 {
   animation: title_show 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   font-size: 6rem;
 }
+/* NAV bar*/
 section.home nav {
   position: absolute;
   display: flex;
@@ -63,10 +91,41 @@ section.home nav {
   height: 4rem;
   top: 0;
   padding: 0 2rem;
+  color: var(--gray0);
 }
+section.home #legend {
+  color: var(--gray0);
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: end;
+  height: 4rem;
+  padding: 0 2rem;
+  flex-direction: column;
+  right: 0;
+}
+section.home #legend :first-child {
+  margin: 0;
+}
+
 section.home nav .logo {
   width: 4rem;
 }
+section.home nav ul {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+section.home nav ul li a {
+  padding: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
 section.home .up-wave {
   position: absolute;
   top: -10px;
@@ -82,18 +141,19 @@ section.home .waves,
   width: 100%;
 }
 
+/* RXJS */
+
 /* section.rxjs {
   background-color: #ba2ad2;
   color: white;
 } */
+
+/* NGRZ */
 section.ngrx {
   background-color: #412945;
   color: wheat;
 }
-section.slide-wrapper iframe {
-  height: 100%;
-  width: 100%;
-}
+
 @keyframes title_show {
   0% {
     opacity: 0;
