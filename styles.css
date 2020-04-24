@@ -111,6 +111,9 @@ section.home #legend :first-child {
 section.home nav .logo {
   width: 4rem;
 }
+section.home nav .logo:hover {
+  animation: color-rotate infinite alternate;
+}
 section.home nav ul {
   display: flex;
   height: 100%;
@@ -162,6 +165,14 @@ section.ngrx {
   100% {
     opacity: 1;
     transform: translatex(0rem);
+  }
+}
+@keyframes color-rotate {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360);
   }
 }
 
