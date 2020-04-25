@@ -34,6 +34,7 @@ body {
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth; /* per creare l'effetto lento sul clic dell'anchor*/
+  background-color: var(--bg);
 }
 
 /* tutte le sezioni */
@@ -99,7 +100,6 @@ section.home #legend {
   bottom: 0;
   display: flex;
   justify-content: end;
-  height: 4rem;
   padding: 0 2rem;
   flex-direction: column;
   right: 0;
@@ -147,15 +147,11 @@ section.home .waves,
 /* RXJS */
 
 /* section.rxjs {
-  background-color: #ba2ad2;
-  color: white;
 } */
 
 /* NGRZ */
-section.ngrx {
-  background-color: #412945;
-  color: wheat;
-}
+/* section.ngrx {
+} */
 
 @keyframes title_show {
   0% {
